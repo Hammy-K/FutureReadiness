@@ -10,6 +10,12 @@
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       margin: 40px 200px 40px;
       background-color: #fdf4d889;
+      
+    }
+
+    body[lang="ar"] {
+        direction: rtl;
+        text-align: right;
     }
 
     h1 {
@@ -151,7 +157,6 @@
   </h1>
   <h2 id="header-subtitle">Ready to create something amazing? 🚀 <br> Today, you’ll use ChatGPT to build, test, and enhance your own AI-powered project!</h2>
 
-
   <div class="progress-bar">
     <div class="progress-bar-fill" id="progress-bar">0%</div>
   </div>
@@ -159,61 +164,59 @@
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-1" onchange="toggleStep(1)">
-      <label for="checkbox-1">Test the Starting Code</label>
+      <label id="step-1-label" for="checkbox-1">Test the Starting Code</label>
     </div>
-    <p>Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.</p>
-    <button onclick="redirectToCodepen()">Open in CodePen</button>
+    <p id="step-1-description">Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.</p>
+    <button id="step-1-button" onclick="redirectToCodepen()">Open in CodePen</button>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-2" onchange="toggleStep(2)">
-      <label for="checkbox-2">Decide Your Project Idea</label>
+      <label id="step-2-label" for="checkbox-2">Decide Your Project Idea</label>
     </div>
-    <p>
+    <p id="step-2-description">
       Think of an idea you’d like to work on, e.g., 
-      <ul>
+      <ul id="step-2-examples">
         <li>A chatbot predicting 2034 World Cup results.</li>
         <li>A storytelling assistant for team journeys.</li>
         <li>A game to manage World Cup teams with AI.</li>
       </ul>
     </p>
     <input type="text" id="student-idea" placeholder="Type your idea here...">
-    <button onclick="saveIdea()">Save Idea</button>
+    <button id="step-2-button" onclick="saveIdea()">Save Idea</button>
     <p id="saved-idea-feedback"></p>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-3" onchange="toggleStep(3)">
-      <label for="checkbox-3">Your Starting Prompt</label>
+      <label id="step-3-label" for="checkbox-3">Your Starting Prompt</label>
     </div>
-    <p>Copy your personalized prompt to get started.</p>
-    <button onclick="copyPrompt()">Copy Prompt</button>
+    <p id="step-3-description">Copy your personalized prompt to get started.</p>
+    <button id="step-3-button" onclick="copyPrompt()">Copy Prompt</button>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-4" onchange="toggleStep(4)">
-      <label for="checkbox-4">ChatGPT - Your Assistant </label>
+      <label id="step-4-label" for="checkbox-4">ChatGPT - Your Assistant </label>
     </div>
-      <p>Paste your prompt into ChatGPT to customize your project.</p>
-    
-    
-    <button onclick="redirectToChatGPT()">Go To ChatGPT</button>
+    <p id="step-4-description">Paste your prompt into ChatGPT to customize your project.</p>
+    <button id="step-4-button" onclick="redirectToChatGPT()">Go To ChatGPT</button>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-5" onchange="toggleStep(5)">
-      <label for="checkbox-5">The Final Touches 🚀</label>
+      <label id="step-5-label" for="checkbox-5">The Final Touches 🚀</label>
     </div>
-    <p>You're almost there! Here’s how to make your project shine:</p>
-    <ul>
+    <p id="step-5-description">You're almost there! Here’s how to make your project shine:</p>
+    <ul id="step-5-list">
       <li>💻 <b>Take ChatGPT's output</b> and run it in CodePen to test it out.</li>
       <li>🎨 <b>Experiment with it!</b> Analyze the code and think about cool enhancement ideas.</li>
       <li>🎯 Be <b>super specific</b> with your asks to ChatGPT, like:
-        <ul>
+        <ul id="step-5-nested-list">
           <li>"Change the background color to Pink"</li>
           <li>"Add a scoring system"</li>
           <li>"Add emojis and buttons here"</li>
@@ -221,7 +224,7 @@
       </li>
       <li>🔁 <b>Repeat the cycle</b>—test, improve, and ask ChatGPT again until your timer runs out or you're happy with the results!</li>
     </ul>
-    <p><i>Remember: The more specific you are, the better ChatGPT can help. 💡</i></p>
+    <p id="step-5-note"><i>Remember: The more specific you are, the better ChatGPT can help. 💡</i></p>
   </div>
 
   <div id="toast">Copied to Clipboard</div>
@@ -229,35 +232,134 @@
   <script>
 
 const translations = {
-  en: {
-    headerSubtitle: "Ready to create something amazing? 🚀 <br> Today, you’ll use ChatGPT to build, test, and enhance your own AI-powered project!",
-    step1Label: "Test the Starting Code",
-    step1Description: "Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.",
-    step1Button: "Open in CodePen",
-    step2Label: "Decide Your Project Idea",
-    step2Description: "Think of an idea you’d like to work on, e.g.,",
-    step2Examples: [
-      "A chatbot predicting 2034 World Cup results.",
-      "A storytelling assistant for team journeys.",
-      "A game to manage World Cup teams with AI."
-    ],
-    step2Button: "Save Idea"
-  },
-  ar: {
-    headerSubtitle: "هل أنت مستعد لإنشاء شيء رائع؟ 🚀 <br> اليوم، ستستخدم ChatGPT لبناء مشروعك الذي يعمل بالذكاء الاصطناعي واختباره وتحسينه!",
-    step1Label: "اختبر الكود المبدئي",
-    step1Description: "افتح برنامج CodePen واختبره. تفاعل مع الروبوت وشاهد ماذا يحدث.",
-    step1Button: "افتح في CodePen",
-    step2Label: "حدد فكرة مشروعك",
-    step2Description: "فكر في فكرة ترغب في العمل عليها، مثل:",
-    step2Examples: [
-      "روبوت دردشة يتنبأ بنتائج كأس العالم 2034.",
-      "مساعد لرواية القصص لرحلات الفريق.",
-      "لعبة لإدارة فرق كأس العالم باستخدام الذكاء الاصطناعي."
-    ],
-    step2Button: "احفظ الفكرة"
-  }
-};
+      en: {
+        headerSubtitle: "Ready to create something amazing? 🚀 <br> Today, you’ll use ChatGPT to build, test, and enhance your own AI-powered project!",
+        step1Label: "Test the Starting Code",
+        step1Description: "Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.",
+        step1Button: "Open in CodePen",
+        step2Label: "Decide Your Project Idea",
+        step2Description: "Think of an idea you’d like to work on, e.g.,",
+        step2Examples: [
+          "A chatbot predicting 2034 World Cup results.",
+          "A storytelling assistant for team journeys.",
+          "A game to manage World Cup teams with AI."
+        ],
+        step2Button: "Save Idea",
+        step3Label: "Your Starting Prompt",
+        step3Description: "Copy your personalized prompt to get started.",
+        step3Button: "Copy Prompt",
+        step4Label: "ChatGPT - Your Assistant",
+        step4Description: "Paste your prompt into ChatGPT to customize your project.",
+        step4Button: "Go To ChatGPT",
+        step5Label: "The Final Touches 🚀",
+        step5Description: "You're almost there! Here’s how to make your project shine:",
+        step5List: [
+          "💻 Take ChatGPT's output and run it in CodePen to test it out.",
+          "🎨 Experiment with it! Analyze the code and think about cool enhancement ideas.",
+          "🎯 Be super specific with your asks to ChatGPT, like:",
+          "🔁 Repeat the cycle—test, improve, and ask ChatGPT again until your timer runs out or you're happy with the results!"
+        ],
+        step5NestedList: [
+          "Change the background color to Pink",
+          "Add a scoring system",
+          "Add emojis and buttons here"
+        ],
+        step5Note: "Remember: The more specific you are, the better ChatGPT can help. 💡"
+      },
+      ar: {
+        headerSubtitle: "هل أنت مستعد لإنشاء شيء رائع؟ 🚀 <br> اليوم، ستستخدم ChatGPT لبناء مشروعك الذي يعمل بالذكاء الاصطناعي واختباره وتحسينه!",
+        step1Label: "اختبر الكود المبدئي",
+        step1Description: "افتح برنامج CodePen واختبره. تفاعل مع الروبوت وشاهد ماذا يحدث.",
+        step1Button: "افتح في CodePen",
+        step2Label: "حدد فكرة مشروعك",
+        step2Description: "فكر في فكرة ترغب في العمل عليها، مثل:",
+        step2Examples: [
+          "روبوت دردشة يتنبأ بنتائج كأس العالم 2034.",
+          "مساعد لرواية القصص لرحلات الفريق.",
+          "لعبة لإدارة فرق كأس العالم باستخدام الذكاء الاصطناعي."
+        ],
+        step2Button: "احفظ الفكرة",
+        step3Label: "البداية مع المطالب",
+        step3Description: "انسخ نص المطالب المخصصة لتبدأ.",
+        step3Button: "انسخ النص",
+        step4Label: "ChatGPT - مساعدك",
+        step4Description: "ألصق النص في ChatGPT لتخصيص مشروعك.",
+        step4Button: "اذهب إلى ChatGPT",
+        step5Label: "اللمسات الأخيرة 🚀",
+        step5Description: "لقد قاربت على الانتهاء! إليك كيف تجعل مشروعك متميزاً:",
+        step5List: [
+          "💻 قم بتجربة مخرجات ChatGPT في CodePen لتجربته.",
+          "🎨 جربه! قم بتحليل الكود وفكر في أفكار تعزيزية رائعة.",
+          "🎯 كن محدداً للغاية مع طلباتك من ChatGPT، مثل:",
+          "🔁 كرر العملية - اختبر، حسن، واطلب من ChatGPT مرة أخرى حتى تكون راضياً عن النتائج!"
+        ],
+        step5NestedList: [
+          "غير لون الخلفية إلى وردي",
+          "أضف نظام تسجيل نقاط",
+          "أضف رموزاً تعبيرية وأزرار هنا"
+        ],
+        step5Note: "تذكر: كلما كنت محدداً، كلما كان بإمكان ChatGPT مساعدتك بشكل أفضل. 💡"
+      }
+    };
+
+    function toggleLanguage(language) {
+  const content = translations[language];
+
+  // Update language and direction
+  document.body.setAttribute("lang", language);
+  document.body.style.direction = language === "ar" ? "rtl" : "ltr";
+  document.body.style.textAlign = language === "ar" ? "right" : "left";
+
+  // Update text content
+  document.getElementById("header-subtitle").innerHTML = content.headerSubtitle;
+
+  document.getElementById("step-1-label").textContent = content.step1Label;
+  document.getElementById("step-1-description").textContent = content.step1Description;
+  document.getElementById("step-1-button").textContent = content.step1Button;
+
+  document.getElementById("step-2-label").textContent = content.step2Label;
+  document.getElementById("step-2-description").textContent = content.step2Description;
+
+  const examples = document.getElementById("step-2-examples");
+  examples.innerHTML = ""; // Clear existing examples
+  content.step2Examples.forEach(example => {
+    const li = document.createElement("li");
+    li.textContent = example;
+    examples.appendChild(li);
+  });
+
+  document.getElementById("step-2-button").textContent = content.step2Button;
+
+  document.getElementById("step-3-label").textContent = content.step3Label;
+  document.getElementById("step-3-description").textContent = content.step3Description;
+  document.getElementById("step-3-button").textContent = content.step3Button;
+
+  document.getElementById("step-4-label").textContent = content.step4Label;
+  document.getElementById("step-4-description").textContent = content.step4Description;
+  document.getElementById("step-4-button").textContent = content.step4Button;
+
+  document.getElementById("step-5-label").textContent = content.step5Label;
+  document.getElementById("step-5-description").textContent = content.step5Description;
+
+  const step5List = document.getElementById("step-5-list");
+  step5List.innerHTML = "";
+  content.step5List.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    step5List.appendChild(li);
+  });
+
+  const step5NestedList = document.getElementById("step-5-nested-list");
+  step5NestedList.innerHTML = "";
+  content.step5NestedList.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    step5NestedList.appendChild(li);
+  });
+
+  document.getElementById("step-5-note").innerHTML = content.step5Note;
+}
+
 
 
     let studentIdea = ""; // Store the student's idea
