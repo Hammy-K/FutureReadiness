@@ -8,8 +8,8 @@
   <style>
     body {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      margin: 40px 270px 0; /* Top, left, and right margins */
-      background-color: #fdf4d889; /* Background color */
+      margin: 40px 270px 0;
+      background-color: #fdf4d889;
     }
 
     h1 {
@@ -17,7 +17,7 @@
       align-items: center;
       font-size: 24px;
       color: black;
-      margin-bottom: 20px; /* Space below the title */
+      margin-bottom: 20px;
     }
 
     h1 img {
@@ -27,40 +27,91 @@
       border-radius: 50%;
     }
 
-    .content {
+    .progress-bar {
+      margin: 20px 0;
+      width: 100%;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50; /* Green progress bar */
+      text-align: center;
+      color: white;
+      line-height: 20px;
+      transition: width 0.3s ease;
+    }
+
+    .step {
+      margin: 20px 0;
+      padding: 20px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      padding: 20px;
       background-color: #f9f9f9;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .content h2 {
-      color: #333;
-      font-size: 20px;
+    .step-header {
+      display: flex;
+      align-items: center;
     }
 
-    .content p {
-      line-height: 1.6;
+    .step-header input[type="checkbox"] {
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      accent-color: #4caf50; /* Green checkbox when ticked */
+    }
+
+    .step-header label {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .step p {
+      margin: 10px 0;
       color: #555;
     }
 
-    .back-link, .codepen-link {
-      display: inline-block;
-      margin-top: 15px;
-      text-decoration: none;
-      color: white;
-      background-color: #0078d7;
-      padding: 10px 20px;
-      border-radius: 5px;
+    .step ul {
+      margin: 10px 0;
+      padding-left: 20px;
+      color: #555;
     }
 
-    .back-link:hover, .codepen-link:hover {
+    .step ul li {
+      margin-bottom: 5px;
+    }
+
+    .step button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .step button:hover {
       background-color: #005fa3;
     }
 
-    .codepen-link {
-      margin-left: 10px;
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #saved-idea-feedback {
+      font-style: italic;
     }
   </style>
 </head>
@@ -70,24 +121,80 @@
     <a href="noon-genai.html">FutureReadiness</a> / Dec16
   </h1>
 
-  <div class="content">
-    <h2>Welcome to the Chatbot Integration Session</h2>
-    <p>
-      In this session, you will learn how to integrate a chatbot powered by GenAI into your website.
-    </p>
-    <p>
-      By the end of this session, you will have a functional chatbot on your site and an understanding of how to customize its behavior.
-    </p>
-    <button class="codepen-link" onclick="redirectToCodepen()">Start on CodePen</button>
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress-bar">0%</div>
   </div>
-  
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-1" onchange="toggleStep(1)">
+      <label for="checkbox-1">Test the Starting Code</label>
+    </div>
+    <p>Open the code in CodePen and try it out. Type in a prompt and see how the chatbot responds.</p>
+    <button onclick="redirectToCodepen()">Open in CodePen</button>
+  </div>
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-2" onchange="toggleStep(2)">
+      <label for="checkbox-2">Decide Your Project Idea</label>
+    </div>
+    <p>
+      Think of an idea you’d like to work on, e.g., 
+      <ul>
+        <li>A chatbot that predicts match outcomes for the 2034 World Cup.</li>
+        <li>A storytelling assistant that narrates the journey of a team in the World Cup.</li>
+        <li>A game where players manage a World Cup team with AI-generated strategies.</li>
+      </ul>
+    </p>
+    <input type="text" id="student-idea" placeholder="Type your project idea here...">
+    <button onclick="saveIdea()">Save Idea</button>
+    <p id="saved-idea-feedback"></p>
+  </div>
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-3" onchange="toggleStep(3)">
+      <label for="checkbox-3">Use ChatGPT for Customization</label>
+    </div>
+    <p>Open ChatGPT with your idea and customize your project:</p>
+    <button onclick="redirectToChatGPT()">Open in ChatGPT</button>
+  </div>
+
   <script>
+    let studentIdea = ""; // Store the student's idea
+
+    function saveIdea() {
+      const ideaInput = document.getElementById("student-idea");
+      const feedback = document.getElementById("saved-idea-feedback");
+
+      if (ideaInput.value.trim() === "") {
+        feedback.textContent = "Please enter a valid idea!";
+        feedback.style.color = "red";
+      } else {
+        studentIdea = ideaInput.value.trim();
+        feedback.textContent = `Your idea "${studentIdea}" has been saved! You can use it in the next steps.`;
+        feedback.style.color = "green";
+      }
+    }
+
+    function toggleStep(stepNumber) {
+      const progressBar = document.getElementById("progress-bar");
+      const totalSteps = 3; // Update this if more steps are added
+      const completedSteps = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const progress = Math.round((completedSteps / totalSteps) * 100);
+
+      // Update the progress bar width and text
+      progressBar.style.width = `${progress}%`;
+      progressBar.textContent = `${progress}%`;
+    }
+
     function redirectToCodepen() {
       const form = document.createElement('form');
       form.action = 'https://codepen.io/pen/define';
       form.method = 'POST';
       form.target = '_blank';
-  
+
       const data = {
         title: "Chatbot Integration Template",
         html: `
@@ -106,22 +213,33 @@
             const data = await response.json();
             alert("Chatbot says: " + data.reply);
           }
-  
           document.getElementById('sendButton').addEventListener('click', sendMessage);
         `
       };
-  
+
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = 'data';
       input.value = JSON.stringify(data);
-  
+
       form.appendChild(input);
       document.body.appendChild(form);
       form.submit();
       document.body.removeChild(form);
     }
+
+    function redirectToChatGPT() {
+      const baseUrl = "https://chat.openai.com/?prompt=";
+      const defaultPrompt = `
+        "Help me customize this project: 
+        I want to create a chatbot that predicts match outcomes for the 2034 World Cup."
+      `;
+      const prompt = studentIdea 
+        ? `Help me customize this project idea: "${studentIdea}".`
+        : defaultPrompt;
+      const encodedPrompt = encodeURIComponent(prompt.trim());
+      window.open(baseUrl + encodedPrompt, "_blank");
+    }
   </script>
-  
 </body>
 </html>
