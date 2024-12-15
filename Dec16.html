@@ -164,23 +164,23 @@
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-1" onchange="toggleStep(1)">
-      <label id="step-1-label" for="checkbox-1">Test the Starting Code</label>
+      <label id="step-1-label" for="checkbox-1">1. Test the Code</label>
     </div>
-    <p id="step-1-description">Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.</p>
+    <p id="step-1-description">Launch CodePen and test the chatbot Interact with the chatbot and see what happens.</p>
     <button id="step-1-button" onclick="redirectToCodepen()">Open in CodePen</button>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-2" onchange="toggleStep(2)">
-      <label id="step-2-label" for="checkbox-2">Decide Your Project Idea</label>
+      <label id="step-2-label" for="checkbox-2">2. Decide Your Project Idea</label>
     </div>
     <p id="step-2-description">
       Think of an idea you’d like to work on, e.g., 
       <ul id="step-2-examples">
-        <li>A chatbot predicting 2034 World Cup results.</li>
-        <li>A storytelling assistant for team journeys.</li>
+        <li>An interactive chatbot that tells a story.</li>
         <li>A game to manage World Cup teams with AI.</li>
+        <li>A game that interacts with a chatbot.</li>
       </ul>
     </p>
     <input type="text" id="student-idea" placeholder="Type your idea here...">
@@ -191,25 +191,25 @@
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-3" onchange="toggleStep(3)">
-      <label id="step-3-label" for="checkbox-3">Your Starting Prompt</label>
+      <label id="step-3-label" for="checkbox-3">3. Your Starting Prompt</label>
     </div>
-    <p id="step-3-description">Copy your personalized prompt to get started.</p>
+    <p id="step-3-description">Your idea from step 2 will be included in the prompt. Copy your personalized prompt to launch it in ChatGPT.</p>
     <button id="step-3-button" onclick="copyPrompt()">Copy Prompt</button>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-4" onchange="toggleStep(4)">
-      <label id="step-4-label" for="checkbox-4">ChatGPT - Your Assistant </label>
+      <label id="step-4-label" for="checkbox-4">4. Using ChatGPT as an Assistant </label>
     </div>
-    <p id="step-4-description">Paste your prompt into ChatGPT to customize your project.</p>
+    <p id="step-4-description">Paste your prompt into ChatGPT to start customizing your project.</p>
     <button id="step-4-button" onclick="redirectToChatGPT()">Go To ChatGPT</button>
   </div>
 
   <div class="step">
     <div class="step-header">
       <input type="checkbox" id="checkbox-5" onchange="toggleStep(5)">
-      <label id="step-5-label" for="checkbox-5">The Final Touches 🚀</label>
+      <label id="step-5-label" for="checkbox-5">5. The Final Touches 🚀</label>
     </div>
     <p id="step-5-description">You're almost there! Here’s how to make your project shine:</p>
     <ul id="step-5-list">
@@ -228,6 +228,27 @@
   </div>
 
   <div id="toast">Copied to Clipboard</div>
+
+   <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-6" onchange="toggleStep(6)">
+      <label id="step-6-label" for="checkbox-6">Submit Your Project 📝</label>
+    </div>
+    <p id="step-6-description">
+      Great work! Submit your project link and details below to complete the task.
+    </p>
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSe0VBHPFLzxl_7ZpNiE629hU_F3-a0cP3Bw6nrv-02bnYBAWQ/viewform?embedded=true" 
+      width="100%" 
+      height="855" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0"
+      style="border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      Loading…
+    </iframe>
+  </div>
 
   <script>
 
@@ -264,7 +285,10 @@ const translations = {
           "Add a scoring system",
           "Add emojis and buttons here"
         ],
-        step5Note: "Remember: The more specific you are, the better ChatGPT can help. 💡"
+        step5Note: "Remember: The more specific you are, the better ChatGPT can help. 💡",
+        step6Label: "Submit Your Project 📝",
+        step6Description: "Great work! Submit your project link and details below to complete the task."
+         
       },
       ar: {
         headerSubtitle: "جاهز تسوي شيء رهيب؟ 🚀 <br> اليوم بتستخدم ChatGPT عشان تبني مشروعك بالذكاء الاصطناعي، تجربه، وتطوره!",
@@ -298,7 +322,9 @@ const translations = {
             "أضف نظام تسجيل نقاط 🎯",
             "حط رموز تعبيرية وأزرار هنا 😎"
         ],
-        step5Note: "تذكر: كل ما كنت دقيق أكثر، ساعدك ChatGPT بشكل أفضل. 💡"
+        step5Note: "تذكر: كل ما كنت دقيق أكثر، ساعدك ChatGPT بشكل أفضل. 💡",
+        step6Label: "سلم مشروعك 📝",
+        step6Description: "كفو يا بطل، آخر خطوة انك تسلم رابط مشروعك!"
         }
 
     };
@@ -341,6 +367,8 @@ const translations = {
 
   document.getElementById("step-5-label").textContent = content.step5Label;
   document.getElementById("step-5-description").textContent = content.step5Description;
+      document.getElementById("step-6-label").textContent = content.step6Label;
+      document.getElementById("step-6-description").textContent = content.step6Description;
 
   const step5List = document.getElementById("step-5-list");
   step5List.innerHTML = "";
@@ -381,7 +409,7 @@ const translations = {
 
     function toggleStep(stepNumber) {
       const progressBar = document.getElementById("progress-bar");
-      const totalSteps = 5; // Update this if more steps are added
+      const totalSteps = 6; // Update this if more steps are added
       const completedSteps = document.querySelectorAll('input[type="checkbox"]:checked').length;
       const progress = Math.round((completedSteps / totalSteps) * 100);
 
