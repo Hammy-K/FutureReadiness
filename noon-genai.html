@@ -90,17 +90,22 @@
   </div>
 
   <script>
-    navigator.clipboard.writeText(prompt)
-        .then(() => showToast())
-        .catch(() => alert("Failed to copy the prompt."));
+    function copyLink(button) {
+      const link = button.getAttribute('data-link'); // Get the data-link attribute
+      navigator.clipboard.writeText(link).then(() => {
+        showToast("Copied to Clipboard"); // Show success toast
+      }).catch(err => {
+        alert("Failed to copy the link. Please try again.");
+      });
     }
 
-    function showToast() {
-      const toast = document.getElementById("toast");
-      toast.style.display = "block";
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
       setTimeout(() => {
-        toast.style.display = "none";
-      }, 3000);
+        toast.classList.remove('show');
+      }, 2000); // Toast disappears after 2 seconds
     }
   </script>
 </body>
