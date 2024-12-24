@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureReadiness/Dec16</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      margin: 40px 200px 40px;
+      background-color: #fdf4d889;
+      
+    }
+
+    body[lang="ar"] {
+        direction: rtl;
+        text-align: right;
+    }
+
+    h1 {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      color: black;
+      margin-bottom: 10px;
+    }
+
+    h1 img {
+      height: 40px;
+      width: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    h2 {
+      font-size: 40px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      margin: 20px 0;
+      width: 100%;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50; /* Green progress bar */
+      text-align: center;
+      color: white;
+      line-height: 20px;
+      transition: width 0.3s ease;
+    }
+
+    .step {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .step-header input[type="checkbox"] {
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      accent-color: #4caf50; /* Green checkbox when ticked */
+    }
+
+    .step-header label {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .step p {
+      margin: 10px 0;
+      color: #555;
+    }
+
+    .step ul {
+      margin: 10px 0;
+      padding-left: 20px;
+      color: #555;
+    }
+
+    .step ul li {
+      margin-bottom: 5px;
+    }
+
+    .step button {
+    display: inline-block;
+    width: 200px; /* Standardize width to the largest button */
+    padding: 10px 20px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Center align text */
+    }
+
+    .step button:hover {
+    background-color: #005fa3;
+    }
+
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #saved-idea-feedback {
+      font-style: italic;
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  
+  /* Enhanced Info Icon */
+.info-icon {
+  color: white;
+  background-color: #76818997;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 5px;
+  border-radius: 50%;
+  padding: 5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.info-icon:hover {
+  background-color: #76818997;
+  transform: scale(1.1);
+}
+
+/* Adjust Popup for Improved Positioning */
+.popup {
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  position: absolute;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+}
+
+.popup.visible {
+  display: block;
+}
+
+    
+  </style>
+</head>
+<body>
+    <div class="language-toggle">
+        <button onclick="toggleLanguage('en')">English</button>
+        <button onclick="toggleLanguage('ar')">العربية</button>
+      </div>
+       
+  <h1>
+    <img src="https://cdn.prod.website-files.com/66abfefdda29b2d6ddb4b762/66ac7a209e5ee257f901d7be_webclip%20(1).jpg" alt="Noon Icon">
+    <a href="noon-genai.html">FutureReadiness</a> / Dec18
+  </h1>
+  <h2 id="header-subtitle">Mid-Semester Project Checklist 🏆✨ </h2>
+
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progress-bar">0%</div>
+  </div>
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-1" onchange="toggleStep(1)">
+      <label id="step-1-label" for="checkbox-1">Step 1: Personalize Your Website 🖌️ <span class="xp"> (30 XP) </span></label>
+    </div>
+    <p id="step-1-description"><strong>This is your creative space. Think of it as your digital signature!</strong></p>
+    <ul>
+      <li>
+        Explore the website template in CodePen.
+      </li>
+      <li>
+        <strong>(10 XP) -</strong> Customize the homepage by changing your name, colors, and fonts to match your vibe.
+        <span class="info-icon" onclick="togglePopup('hint1')">i</span>
+        <div class="popup" id="hint1">Hint: Use ChatGPT for help, like "How do I change my website colors?"</div>
+      </li>
+      <li>
+        <strong>(20 XP) -</strong> Replace the placeholder image with your avatar or picture.
+        <span class="info-icon" onclick="togglePopup('hint2')">i</span>
+        <div class="popup" id="hint2">Tip: Struggling? Ask a friend, then ChatGPT: "How do I add an image to my website?"</div>
+      </li>
+      <button id="step-1-button" onclick="redirectToCodepen()">Open in CodePen</button>
+    </ul>
+  </div>  
+
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-2" onchange="toggleStep(2)">
+      <label id="step-2-label" for="checkbox-2">Step 2. Build and Embed a Simple Application 🎮  (60 XP)</label>
+    </div>
+    <p id="step-2-description">
+      </p>
+      <ol>
+        <li>
+          <strong>Build Your Project:</strong>
+          <p>Open a new view in CodePen and start building your idea (e.g., a game, calculator, or quiz). Use ChatGPT for help if needed (e.g., "How do I create a simple quiz in HTML?").</p>
+        </li>
+        <li>
+          <strong>Get the Embed Code:</strong>
+          <p>Once your project is ready, click on <em>"Embed"</em> in CodePen. Then choose <code>&lt;iframe&gt;</code> and Copy the code.</p>
+        </li>
+        <li>
+          <strong>Add the Embed Code to Your Website:</strong>
+          <p>Go back to your website. Replace the placeholder <code>&lt;iframe&gt;</code> link with the embed code you copied. Save your changes to see your project live on your website!</p>
+        </li>
+      </ol>
+    </div>
+      </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-3" onchange="toggleStep(3)">
+      <label id="step-3-label" for="checkbox-3">Step 3. Bonus Challenge 🌟 (50 XP)</label>
+    </div>
+    <p id="step-3-description">
+      <strong>Show off your skills by adding something extra! Some ideas:</strong> </p>
+      <ul>
+        <li> Add a "dark mode" toggle </li>
+        <li> Create a dynamic image gallery</li>
+        <li> Embed a Google Form to collect responses </li>
+        <li> Display a greeting based on the time of day.</li>
+        </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-4" onchange="toggleStep(4)">
+      <label id="step-4-label" for="checkbox-4">Step 4. Share and Collaborate 🤝 (20 XP) </label>
+    </div>
+    <p id="step-4-description">
+      <strong>Get inspired and inspire others!</strong> </p>
+      <ul>
+        <li> Show your website with your friend and ask for feedback</li>
+        <li> Brainstorm improvements and add new fun elements based on their suggestions</li>
+        </ul>
+  </div>
+
+   <div class="step">
+    <div class="step-header">
+      <input type="checkbox" id="checkbox-5" onchange="toggleStep(6)">
+      <label id="step-5-label" for="checkbox-5">Step 5. Submit Your Project 📤 (10 XP)</label>
+    </div>
+    <p id="step-6-description">
+      Let us celebrate progress! No need for perfection :)
+    </p>
+    <ul>
+      <li> Save your CodePen project link </li>
+      <li> Submit it below</li>
+      </ul>
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdXeE3JjyK_oF7xnshi_cFPmge8AoaqIcjd8xDE5ghCQJMJ5w/viewform?usp=sf_link" 
+      width="100%" 
+      height="855" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0"
+      style="border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      Loading…
+    </iframe>
+  </div>
+
+
+  <div class="step">
+    <div class="step-header">
+      <label id="step-6-label" for="checkbox-6">Step 6. Publishing Your Website 🌐 </label>
+    </div>
+    <p id="step-6-description">
+      <strong>Take your first step toward being a creator!</strong> </p>
+      <ul>
+        <li> We’ll guide you to publish your website and make it live for the world. </li>
+        <li> Celebrate your achievement! 🎉</li>
+        </ul>
+  </div>
+
+  <script>
+  function togglePopup(id) {
+    const popup = document.getElementById(id);
+    popup.classList.toggle('visible');
+  }
+
+
+const translations = {
+      en: {
+        headerSubtitle: "Ready to create something amazing? 🚀 <br> Today, you’ll use ChatGPT to build, test, and enhance your own AI-powered project!",
+        step1Label: "Test the Starting Code",
+        step1Description: "Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.",
+        step1Button: "Open in CodePen",
+        step2Label: "Decide Your Project Idea",
+        step2Description: "Think of an idea you’d like to work on, e.g.,",
+        step2Examples: [
+          "A chatbot predicting 2034 World Cup results.",
+          "A storytelling assistant for team journeys.",
+          "A game to manage World Cup teams with AI."
+        ],
+        step2Button: "Save Idea",
+        step3Label: "Your Starting Prompt",
+        step3Description: "Copy your personalized prompt to get started.",
+        step3Button: "Copy Prompt",
+        step4Label: "ChatGPT - Your Assistant",
+        step4Description: "Paste your prompt into ChatGPT to customize your project.",
+        step4Button: "Go To ChatGPT",
+        step5Label: "The Final Touches 🚀",
+        step5Description: "You're almost there! Here’s how to make your project shine:",
+        step5List: [
+          "💻 Take ChatGPT's output and run it in CodePen to test it out.",
+          "🎨 Experiment with it! Analyze the code and think about cool enhancement ideas.",
+          "🎯 Be super specific with your asks to ChatGPT, like:",
+          "🔁 Repeat the cycle—test, improve, and ask ChatGPT again until your timer runs out or you're happy with the results!"
+        ],
+        step5NestedList: [
+          "Change the background color to Pink",
+          "Add a scoring system",
+          "Add emojis and buttons here"
+        ],
+        step5Note: "Remember: The more specific you are, the better ChatGPT can help. 💡",
+        step6Label: "Submit Your Project 📝",
+        step6Description: "Great work! Submit your project link and details below to complete the task."
+         
+      },
+      ar: {
+        headerSubtitle: "جاهز تسوي شيء رهيب؟ 🚀 <br> اليوم بتستخدم ChatGPT عشان تبني مشروعك بالذكاء الاصطناعي، تجربه، وتطوره!",
+        step1Label: "جرب الكود المبدئي",
+        step1Description: "افتح CodePen وجربه. تفاعل مع البوت وشوف وش يصير.",
+        step1Button: "افتح في CodePen",
+        step2Label: "اختر فكرة مشروعك",
+        step2Description: "فكر في فكرة حاب تشتغل عليها، مثل:",
+        step2Examples: [
+            "روبوت يتوقع نتائج كأس العالم 2034. ⚽",
+            "مساعد يحكي رحلة المنتخب. 📖",
+            "لعبة تدير فيها فرق كأس العالم بالذكاء الاصطناعي. 🎮"
+        ],
+        step2Button: "احفظ الفكرة",
+        step3Label: "ابدأ بالبرومبت",
+        step3Description: "انسخ البرومبت اللي يناسب مشروعك وابدأ فيه.",
+        step3Button: "انسخ البرومبت",
+        step4Label: "ChatGPT - مساعدك الخاص",
+        step4Description: "ألصق البرومبت في ChatGPT وعدل مشروعك بالطريقة اللي تعجبك.",
+        step4Button: "روح لـ ChatGPT",
+        step5Label: "اللمسات الأخيرة 🚀",
+        step5Description: "قربنا نخلص! شوف كيف تخلي مشروعك يطلع رهيب:",
+        step5List: [
+            "💻 جرب مخرجات ChatGPT في CodePen وشوف كيف تطلع.",
+            "🎨 العب بالكود! حلله وفكر بأفكار جديدة تضيفها.",
+            "🎯 خلك دقيق في طلباتك من ChatGPT، زي كذا:",
+            "🔁 كرر العملية - جرب، حسن، وارجع لـ ChatGPT إلين توصل للي يعجبك!"
+        ],
+        step5NestedList: [
+            "خل لون الخلفية وردي 🌸",
+            "أضف نظام تسجيل نقاط 🎯",
+            "حط رموز تعبيرية وأزرار هنا 😎"
+        ],
+        step5Note: "تذكر: كل ما كنت دقيق أكثر، ساعدك ChatGPT بشكل أفضل. 💡",
+        step6Label: "سلم مشروعك 📝",
+        step6Description: "كفو يا بطل، آخر خطوة انك تسلم رابط مشروعك!"
+        }
+
+    };
+
+    function toggleLanguage(language) {
+  const content = translations[language];
+
+  // Update language and direction
+  document.body.setAttribute("lang", language);
+  document.body.style.direction = language === "ar" ? "rtl" : "ltr";
+  document.body.style.textAlign = language === "ar" ? "right" : "left";
+
+  // Update text content
+  document.getElementById("header-subtitle").innerHTML = content.headerSubtitle;
+
+  document.getElementById("step-1-label").textContent = content.step1Label;
+  document.getElementById("step-1-description").textContent = content.step1Description;
+  document.getElementById("step-1-button").textContent = content.step1Button;
+
+  document.getElementById("step-2-label").textContent = content.step2Label;
+  document.getElementById("step-2-description").textContent = content.step2Description;
+
+  const examples = document.getElementById("step-2-examples");
+  examples.innerHTML = ""; // Clear existing examples
+  content.step2Examples.forEach(example => {
+    const li = document.createElement("li");
+    li.textContent = example;
+    examples.appendChild(li);
+  });
+
+  document.getElementById("step-2-button").textContent = content.step2Button;
+
+  document.getElementById("step-3-label").textContent = content.step3Label;
+  document.getElementById("step-3-description").textContent = content.step3Description;
+  document.getElementById("step-3-button").textContent = content.step3Button;
+
+  document.getElementById("step-4-label").textContent = content.step4Label;
+  document.getElementById("step-4-description").textContent = content.step4Description;
+  document.getElementById("step-4-button").textContent = content.step4Button;
+
+  document.getElementById("step-5-label").textContent = content.step5Label;
+  document.getElementById("step-5-description").textContent = content.step5Description;
+      document.getElementById("step-6-label").textContent = content.step6Label;
+      document.getElementById("step-6-description").textContent = content.step6Description;
+
+  const step5List = document.getElementById("step-5-list");
+  step5List.innerHTML = "";
+  content.step5List.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    step5List.appendChild(li);
+  });
+
+  const step5NestedList = document.getElementById("step-5-nested-list");
+  step5NestedList.innerHTML = "";
+  content.step5NestedList.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    step5NestedList.appendChild(li);
+  });
+
+  document.getElementById("step-5-note").innerHTML = content.step5Note;
+}
+
+
+
+    let studentIdea = ""; // Store the student's idea
+
+    function saveIdea() {
+      const ideaInput = document.getElementById("student-idea");
+      const feedback = document.getElementById("saved-idea-feedback");
+
+      if (ideaInput.value.trim() === "") {
+        feedback.textContent = "Please enter a valid idea!";
+        feedback.style.color = "red";
+      } else {
+        studentIdea = ideaInput.value.trim();
+        feedback.textContent = `Your idea "${studentIdea}" has been saved!`;
+        feedback.style.color = "green";
+      }
+    }
+
+    function toggleStep(stepNumber) {
+      const progressBar = document.getElementById("progress-bar");
+      const totalSteps = 5; // Update this if more steps are added
+      const completedSteps = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const progress = Math.round((completedSteps / totalSteps) * 100);
+
+      // Update the progress bar width and text
+      progressBar.style.width = `${progress}%`;
+      progressBar.textContent = `${progress}%`;
+    }
+
+    function copyPrompt() {
+        const prompt = `
+          1. Role: You are my coding assistant. Assume I have no prior coding experience.
+          2. Objective: I have a basic code that includes chatbot integration, and I want your help to develop it further into ${
+                  studentIdea || "a cool project"
+              } by integrating this chatbot into my website.
+          3. Context: I am using CodePen to run my code, so the updates you provide should work seamlessly in that environment.
+          4. Instruction: Always return the full, updated code wrapped in a proper <!DOCTYPE html> structure.
+
+      `.trim();
+
+      navigator.clipboard.writeText(prompt)
+        .then(() => showToast())
+        .catch(() => alert("Failed to copy the prompt."));
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 3000);
+    }
+
+    function redirectToCodepen() {
+      const form = document.createElement('form');
+      form.action = 'https://codepen.io/pen/define';
+      form.method = 'POST';
+      form.target = '_blank';
+
+      const data = {
+        title: "Personal Website Template",
+        html: `
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interactive HTML Lesson</title>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+        </head>
+        <header>
+          <h1>Welcome to My Personalized Website</h1>
+        </header>
+        <nav>
+          <a href="#about">About Me</a>
+          <a href="#my-app">My Application</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <section id="about">
+          <h2>About Me</h2>
+          <div class="about-me-container">
+            <img src="https://via.placeholder.com/150" alt="Your Image">
+            <p>Hi! My name is [Your Name]. Im excited to share my website and the cool application Ive built.</p>
+          </div>
+        </section>
+        <section id="my-app">
+          <h2>My Application</h2>
+          <p>This is where my awesome application lives! Check it out below:</p>
+          <div class="app-container">
+            <iframe src="https://codepen.io/YOUR_APP/embed" width="600" height="400" frameborder="0"></iframe>
+          </div>
+        </section>
+        <section id="contact">
+          <h2>Contact Me</h2>
+          <p>Feel free to reach out if youd like to collaborate or share feedback about my site!</p>
+          <p>Email: your-email@example.com</p>
+        </section>
+        <footer>
+          <p>&copy; 2024 [Your Name]. All Rights Reserved.</p>
+        </footer>
+    `,
+                css: `
+                body {
+                font-family: 'IBM Plex Sans Arabic', sans-serif;
+                margin: 20px;
+                background-color: #fdf4d8;
+                color: #333;
+                line-height: 1.6;
+              }
+
+              header {
+                text-align: center;
+                padding: 20px 0;
+                background-color: #0078d7;
+                color: white;
+                border-radius: 10px;
+              }
+
+              header h1 {
+                margin: 0;
+              }
+
+              nav {
+                margin: 20px 0;
+                text-align: center;
+              }
+
+              nav a {
+                text-decoration: none;
+                color: #0078d7;
+                margin: 0 10px;
+                font-weight: bold;
+              }
+
+              nav a:hover {
+                text-decoration: underline;
+              }
+
+              section {
+                margin: 20px 0;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+              }
+
+              h2 {
+                color: #0078d7;
+              }
+
+              .about-me-container {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+              }
+
+              .about-me-container img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                border: 2px solid #0078d7;
+                object-fit: cover;
+              }
+
+              .app-container {
+                text-align: center;
+                margin: 20px 0;
+              }
+
+              iframe {
+                border: 2px solid #ccc;
+                border-radius: 10px;
+              }
+
+              footer {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 14px;
+                color: #777;
+              }
+                `,
+                js: `
+                // Add any interactivity here
+                document.querySelectorAll("nav a").forEach((link) => {
+                  link.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const target = document.querySelector(link.getAttribute("href"));
+                    target.scrollIntoView({ behavior: "smooth" });
+                  });
+                });
+
+                `
+      };
+
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'data';
+      input.value = JSON.stringify(data);
+
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+    }
+
+    document.addEventListener('click', (event) => {
+  // Close all popups if clicking outside
+  const popups = document.querySelectorAll('.popup.visible');
+  popups.forEach((popup) => {
+    if (!popup.contains(event.target) && !event.target.classList.contains('info-icon')) {
+      popup.classList.remove('visible');
+    }
+  });
+});
+
+function togglePopup(id) {
+  const popup = document.getElementById(id);
+  // Close other visible popups
+  const allPopups = document.querySelectorAll('.popup.visible');
+  allPopups.forEach((otherPopup) => {
+    if (otherPopup !== popup) {
+      otherPopup.classList.remove('visible');
+    }
+  });
+  popup.classList.toggle('visible');
+}
+
+  </script>
+</body>
+</html>
+
+    
