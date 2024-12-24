@@ -65,6 +65,29 @@
     .copy-button:hover {
       background-color: #0056b3;
     }
+
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      margin-left: -125px;
+      background-color: #333333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 10px;
+      position: fixed;
+      z-index: 1;
+      left: 50%;
+      bottom: 30px;
+      font-size: 17px;
+      opacity: 0;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -88,6 +111,9 @@
       <button class="copy-button" data-link="https://hammy-k.github.io/FutureReadiness/Dec25.html" onclick="copyLink(this)">Copy Link</button>
     </div>
   </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"></div>
 
   <script>
     function copyLink(button) {
