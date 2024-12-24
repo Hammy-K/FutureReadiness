@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FutureReadiness/Dec25</title>
+  <title>FutureReadiness/Dec16</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -205,213 +205,220 @@
     <img src="https://cdn.prod.website-files.com/66abfefdda29b2d6ddb4b762/66ac7a209e5ee257f901d7be_webclip%20(1).jpg" alt="Noon Icon">
     <a href="noon-genai.html">FutureReadiness</a> / Dec18
   </h1>
-  <h2 id="header-subtitle">Mid-Semester Project Checklist 🏆✨ </h2>
+  <h2 id="header-subtitle">Mid-Semester Project Checklist 🏆✨</h2>
 
-  <div class="progress-bar">
-    <div class="progress-bar-fill" id="progress-bar">0%</div>
+<div class="progress-bar">
+  <div class="progress-bar-fill" id="progress-bar">0%</div>
+</div>
+
+<div class="step">
+  <div class="step-header">
+    <input type="checkbox" id="checkbox-1" onchange="toggleStep(1)">
+    <label id="step-1-label" for="checkbox-1">Step 1: Personalize Your Website 🖌️ <span class="xp"> (20 XP) </span></label>
   </div>
+  <p id="step-1-description"><strong>This is your creative space. Think of it as your digital signature!</strong></p>
+  <ul id="step-1-tasks">
+    <li id="task-1-1">Explore the website template in CodePen.</li>
+    <li id="task-1-2">
+      <strong>(5 XP) -</strong> Customize the homepage by changing your name, colors, and fonts to match your vibe.
+      
+      
+    </li>
+    <li id="task-1-3">
+      <strong>(15 XP) -</strong> Replace the placeholder image with your avatar or picture.
+      
+      
+    </li>
+  </ul>
+  <button id="step-1-button" onclick="redirectToCodepen()">Open in CodePen</button>
+</div>
 
-  <div class="step">
-    <div class="step-header">
-      <input type="checkbox" id="checkbox-1" onchange="toggleStep(1)">
-      <label id="step-1-label" for="checkbox-1">Step 1: Personalize Your Website 🖌️ <span class="xp"> (30 XP) </span></label>
-    </div>
-    <p id="step-1-description"><strong>This is your creative space. Think of it as your digital signature!</strong></p>
-    <ul>
-      <li>
-        Explore the website template in CodePen.
-      </li>
-      <li>
-        <strong>(10 XP) -</strong> Customize the homepage by changing your name, colors, and fonts to match your vibe.
-        <span class="info-icon" onclick="togglePopup('hint1')">i</span>
-        <div class="popup" id="hint1">Hint: Use ChatGPT for help, like "How do I change my website colors?"</div>
-      </li>
-      <li>
-        <strong>(20 XP) -</strong> Replace the placeholder image with your avatar or picture.
-        <span class="info-icon" onclick="togglePopup('hint2')">i</span>
-        <div class="popup" id="hint2">Tip: Struggling? Ask a friend, then ChatGPT: "How do I add an image to my website?"</div>
-      </li>
-      <button id="step-1-button" onclick="redirectToCodepen()">Open in CodePen</button>
-    </ul>
-  </div>  
-
-
-  <div class="step">
-    <div class="step-header">
-      <input type="checkbox" id="checkbox-2" onchange="toggleStep(2)">
-      <label id="step-2-label" for="checkbox-2">Step 2. Build and Embed a Simple Application 🎮  (60 XP)</label>
-    </div>
-    <p id="step-2-description">
-      </p>
-      <ol>
-        <li>
-          <strong>Build Your Project:</strong>
-          <p>Open a new view in CodePen and start building your idea (e.g., a game, calculator, or quiz). Use ChatGPT for help if needed (e.g., "How do I create a simple quiz in HTML?").</p>
-        </li>
-        <li>
-          <strong>Get the Embed Code:</strong>
-          <p>Once your project is ready, click on <em>"Embed"</em> in CodePen. Then choose <code>&lt;iframe&gt;</code> and Copy the code.</p>
-        </li>
-        <li>
-          <strong>Add the Embed Code to Your Website:</strong>
-          <p>Go back to your website. Replace the placeholder <code>&lt;iframe&gt;</code> link with the embed code you copied. Save your changes to see your project live on your website!</p>
-        </li>
-      </ol>
-    </div>
-      </ul>
+<div class="step">
+  <div class="step-header">
+    <input type="checkbox" id="checkbox-2" onchange="toggleStep(2)">
+    <label id="step-2-label" for="checkbox-2">Step 2. Build and Embed a Simple Application 🎮  (60 XP)</label>
   </div>
+  <p id="step-2-description"><strong>Start building your interactive application!</strong></p>
+  <ol id="step-2-tasks">
+    <li id="task-2-1">
+      <strong>Build Your Project:</strong>
+      <p>Open a new view in CodePen and start building your idea (e.g., a game, calculator, or quiz). Use ChatGPT for help if needed (e.g., "How do I create a simple quiz in HTML?").</p>
+    </li>
+    <li id="task-2-2">
+      <strong>Get the Embed Code:</strong>
+      <p>Once your project is ready, click on <em>"Embed"</em> in CodePen. Then choose <code>&lt;iframe&gt;</code> and Copy the code.</p>
+    </li>
+    <li id="task-2-3">
+      <strong>Add the Embed Code to Your Website:</strong>
+      <p>Go back to your website. Replace the placeholder <code>&lt;iframe&gt;</code> link with the embed code you copied. Save your changes to see your project live on your website!</p>
+    </li>
+  </ol>
+</div>
 
-  <div class="step">
-    <div class="step-header">
-      <input type="checkbox" id="checkbox-3" onchange="toggleStep(3)">
-      <label id="step-3-label" for="checkbox-3">Step 3. Bonus Challenge 🌟 (50 XP)</label>
-    </div>
-    <p id="step-3-description">
-      <strong>Show off your skills by adding something extra! Some ideas:</strong> </p>
-      <ul>
-        <li> Add a "dark mode" toggle </li>
-        <li> Create a dynamic image gallery</li>
-        <li> Embed a Google Form to collect responses </li>
-        <li> Display a greeting based on the time of day.</li>
-        </ul>
+<div class="step">
+  <div class="step-header">
+    <input type="checkbox" id="checkbox-3" onchange="toggleStep(3)">
+    <label id="step-3-label" for="checkbox-3">Step 3. Bonus Challenge 🌟 (50 XP)</label>
   </div>
+  <p id="step-3-description">
+    <strong>Show off your skills by adding something extra! Some ideas:</strong>
+  </p>
+  <ul id="step-3-tasks">
+    <li id="task-3-1">Add a "dark mode" toggle</li>
+    <li id="task-3-2">Create a dynamic image gallery</li>
+    <li id="task-3-3">Embed a Google Form to collect responses</li>
+    <li id="task-3-4">Display a greeting based on the time of day</li>
+  </ul>
+</div>
 
-  <div class="step">
-    <div class="step-header">
-      <input type="checkbox" id="checkbox-4" onchange="toggleStep(4)">
-      <label id="step-4-label" for="checkbox-4">Step 4. Share and Collaborate 🤝 (20 XP) </label>
-    </div>
-    <p id="step-4-description">
-      <strong>Get inspired and inspire others!</strong> </p>
-      <ul>
-        <li> Show your website with your friend and ask for feedback</li>
-        <li> Brainstorm improvements and add new fun elements based on their suggestions</li>
-        </ul>
+<div class="step">
+  <div class="step-header">
+    <input type="checkbox" id="checkbox-4" onchange="toggleStep(4)">
+    <label id="step-4-label" for="checkbox-4">Step 4. Share and Collaborate 🤝 (20 XP)</label>
   </div>
+  <p id="step-4-description">
+    <strong>Get inspired and inspire others!</strong>
+  </p>
+  <ul id="step-4-tasks">
+    <li id="task-4-1">Show your website to your friend and ask for feedback</li>
+    <li id="task-4-2">Brainstorm improvements and add new fun elements based on their suggestions</li>
+  </ul>
+</div>
 
-   <div class="step">
-    <div class="step-header">
-      <input type="checkbox" id="checkbox-5" onchange="toggleStep(6)">
-      <label id="step-5-label" for="checkbox-5">Step 5. Submit Your Project 📤 (10 XP)</label>
-    </div>
-    <p id="step-6-description">
-      Let us celebrate progress! No need for perfection :)
-    </p>
-    <ul>
-      <li> Save your CodePen project link </li>
-      <li> Submit it below</li>
-      </ul>
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdXeE3JjyK_oF7xnshi_cFPmge8AoaqIcjd8xDE5ghCQJMJ5w/viewform?usp=sf_link" 
-      width="100%" 
-      height="855" 
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0"
-      style="border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
-    >
-      Loading…
-    </iframe>
+<div class="step">
+  <div class="step-header">
+    <input type="checkbox" id="checkbox-5" onchange="toggleStep(5)">
+    <label id="step-5-label" for="checkbox-5">Step 5. Submit Your Project 📤</label>
   </div>
+  <p id="step-5-description">Let us celebrate progress! No need for perfection :)</p>
+  <ul id="step-5-tasks">
+    <li id="task-5-1">Save your CodePen project link</li>
+    <li id="task-5-2">Submit it below</li>
+  </ul>
+  <iframe 
+    id="submission-form"
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdXeE3JjyK_oF7xnshi_cFPmge8AoaqIcjd8xDE5ghCQJMJ5w/viewform?usp=sf_link" 
+    width="100%" 
+    height="855" 
+    frameborder="0" 
+    marginheight="0" 
+    marginwidth="0"
+    style="border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+  >
+    Loading…
+  </iframe>
+</div>
 
-
-  <div class="step">
-    <div class="step-header">
-      <label id="step-6-label" for="checkbox-6">Step 6. Publishing Your Website 🌐 </label>
-    </div>
-    <p id="step-6-description">
-      <strong>Take your first step toward being a creator!</strong> </p>
-      <ul>
-        <li> We’ll guide you to publish your website and make it live for the world. </li>
-        <li> Celebrate your achievement! 🎉</li>
-        </ul>
+<div class="step">
+  <div class="step-header">
+    <label id="step-6-label" for="checkbox-6">Step 6. Publishing Your Website 🌐</label>
   </div>
-
-  <script>
+  <p id="step-6-description"><strong>Take your first step toward being a creator!</strong></p>
+  <ul id="step-6-tasks">
+    <li id="task-6-1">We’ll guide you to publish your website and make it live for the world.</li>
+    <li id="task-6-2">Celebrate your achievement! 🎉</li>
+  </ul>
+</div>
+<script>
   function togglePopup(id) {
     const popup = document.getElementById(id);
     popup.classList.toggle('visible');
   }
 
 
-const translations = {
-      en: {
-        headerSubtitle: "Ready to create something amazing? 🚀 <br> Today, you’ll use ChatGPT to build, test, and enhance your own AI-powered project!",
-        step1Label: "Test the Starting Code",
-        step1Description: "Launch the chatbot in CodePen and test it. Interact with the chatbot and see what happens.",
-        step1Button: "Open in CodePen",
-        step2Label: "Decide Your Project Idea",
-        step2Description: "Think of an idea you’d like to work on, e.g.,",
-        step2Examples: [
-          "A chatbot predicting 2034 World Cup results.",
-          "A storytelling assistant for team journeys.",
-          "A game to manage World Cup teams with AI."
-        ],
-        step2Button: "Save Idea",
-        step3Label: "Your Starting Prompt",
-        step3Description: "Copy your personalized prompt to get started.",
-        step3Button: "Copy Prompt",
-        step4Label: "ChatGPT - Your Assistant",
-        step4Description: "Paste your prompt into ChatGPT to customize your project.",
-        step4Button: "Go To ChatGPT",
-        step5Label: "The Final Touches 🚀",
-        step5Description: "You're almost there! Here’s how to make your project shine:",
-        step5List: [
-          "💻 Take ChatGPT's output and run it in CodePen to test it out.",
-          "🎨 Experiment with it! Analyze the code and think about cool enhancement ideas.",
-          "🎯 Be super specific with your asks to ChatGPT, like:",
-          "🔁 Repeat the cycle—test, improve, and ask ChatGPT again until your timer runs out or you're happy with the results!"
-        ],
-        step5NestedList: [
-          "Change the background color to Pink",
-          "Add a scoring system",
-          "Add emojis and buttons here"
-        ],
-        step5Note: "Remember: The more specific you are, the better ChatGPT can help. 💡",
-        step6Label: "Submit Your Project 📝",
-        step6Description: "Great work! Submit your project link and details below to complete the task."
-         
-      },
-      ar: {
-        headerSubtitle: "جاهز تسوي شيء رهيب؟ 🚀 <br> اليوم بتستخدم ChatGPT عشان تبني مشروعك بالذكاء الاصطناعي، تجربه، وتطوره!",
-        step1Label: "جرب الكود المبدئي",
-        step1Description: "افتح CodePen وجربه. تفاعل مع البوت وشوف وش يصير.",
-        step1Button: "افتح في CodePen",
-        step2Label: "اختر فكرة مشروعك",
-        step2Description: "فكر في فكرة حاب تشتغل عليها، مثل:",
-        step2Examples: [
-            "روبوت يتوقع نتائج كأس العالم 2034. ⚽",
-            "مساعد يحكي رحلة المنتخب. 📖",
-            "لعبة تدير فيها فرق كأس العالم بالذكاء الاصطناعي. 🎮"
-        ],
-        step2Button: "احفظ الفكرة",
-        step3Label: "ابدأ بالبرومبت",
-        step3Description: "انسخ البرومبت اللي يناسب مشروعك وابدأ فيه.",
-        step3Button: "انسخ البرومبت",
-        step4Label: "ChatGPT - مساعدك الخاص",
-        step4Description: "ألصق البرومبت في ChatGPT وعدل مشروعك بالطريقة اللي تعجبك.",
-        step4Button: "روح لـ ChatGPT",
-        step5Label: "اللمسات الأخيرة 🚀",
-        step5Description: "قربنا نخلص! شوف كيف تخلي مشروعك يطلع رهيب:",
-        step5List: [
-            "💻 جرب مخرجات ChatGPT في CodePen وشوف كيف تطلع.",
-            "🎨 العب بالكود! حلله وفكر بأفكار جديدة تضيفها.",
-            "🎯 خلك دقيق في طلباتك من ChatGPT، زي كذا:",
-            "🔁 كرر العملية - جرب، حسن، وارجع لـ ChatGPT إلين توصل للي يعجبك!"
-        ],
-        step5NestedList: [
-            "خل لون الخلفية وردي 🌸",
-            "أضف نظام تسجيل نقاط 🎯",
-            "حط رموز تعبيرية وأزرار هنا 😎"
-        ],
-        step5Note: "تذكر: كل ما كنت دقيق أكثر، ساعدك ChatGPT بشكل أفضل. 💡",
-        step6Label: "سلم مشروعك 📝",
-        step6Description: "كفو يا بطل، آخر خطوة انك تسلم رابط مشروعك!"
-        }
+  const translations = {
+  en: {
+    headersubtitle: "Mid-Semester Project Checklist 🏆✨",
+progressbar: "0%",
+checkbox1: "Step 1: Personalize Your Website 🖌️",
+step1label: "Step 1: Personalize Your Website 🖌️ (20 XP)",
+step1description: "This is your creative space. Think of it as your digital signature!",
+task11: "Explore the website template in CodePen.",
+task12: "(5 XP) - Customize the homepage by changing your name, colors, and fonts to match your vibe.",
+info1: "Hint: Use ChatGPT for help, like 'How do I change my website colors?'",
+hint1: "Popup hint for Task 1-2",
+task13: "(15 XP) - Replace the placeholder image with your avatar or picture.",
+info2: "Tip: Struggling? Ask a friend, then ChatGPT: 'How do I add an image to my website?'",
+hint2: "Popup hint for Task 1-3",
+step1button: "Open in CodePen",
+checkbox2: "Step 2: Build and Embed a Simple Application 🎮",
+step2label: "Step 2: Build and Embed a Simple Application 🎮 (60 XP)",
+step2description: "Start building your interactive application!",
+task21: "Build Your Project.",
+task22: "Get the Embed Code.",
+task23: "Add the Embed Code to Your Website.",
 
-    };
+checkbox3: "Step 3: Bonus Challenge 🌟",
+step3label: "Step 3: Bonus Challenge 🌟 (50 XP)",
+step3description: "Show off your skills by adding something extra! Some ideas:",
+task31: "Add a 'dark mode' toggle",
+task32: "Create a dynamic image gallery",
+task33: "Embed a Google Form to collect responses",
+task34: "Display a greeting based on the time of day",
+checkbox4: "Step 4: Share and Collaborate 🤝",
+step4label: "Step 4: Share and Collaborate 🤝 (20 XP)",
+step4description: "Get inspired and inspire others!",
+task41: "Show your website to your friend and ask for feedback.",
+task42: "Brainstorm improvements and add new fun elements based on their suggestions.",
+checkbox5: "Step 5: Submit Your Project 📤",
+step5label: "Step 5: Submit Your Project 📤",
+step5description: "Let us celebrate progress! No need for perfection :)",
+task51: "Save your CodePen project link.",
+task52: "Submit it below.",
+submissionform: "Google Form for project submission.",
+step6label: "Step 6: Publishing Your Website 🌐",
+step6description: "Take your first step toward being a creator!",
+task61: "We’ll guide you to publish your website and make it live for the world.",
+task62: "Celebrate your achievement! 🎉",
 
-    function toggleLanguage(language) {
+  },
+  ar: {
+    headersubtitle: "  مشروع نص الترم 🏆✨",
+progressbar: "0%",
+checkbox1: "خطوة 1: خصص موقعك 🖌️",
+step1label: "خطوة 1: خصص موقعك 🖌️ (20 نقطة XP)",
+step1description: "هذا هو مساحة الإبداع تبعك. خليها توقيعك الرقمي! ✨",
+task11: "استكشف القالب الجاهز في CodePen.",
+task12: "(5 نقطة XP) - عدّل الصفحة الرئيسية: حط اسمك، غيّر الألوان، وضبط الخطوط عشان تعكس شخصيتك.",
+
+hint1: "تلميح: خلي ChatGPT يساعدك! 🔍",
+task13: "(15 نقطة XP) - بدّل الصورة المؤقتة بصورة رمزية لك أو صورتك الشخصية.",
+info2: "نصيحة: مو عارف كيف؟ اسأل صاحبك أول، وبعدين ChatGPT: 'كيف أضيف صورة لموقعي؟'",
+hint2: "تلميح: ما عليك، ChatGPT عنده الإجابة! 🤖",
+step1button: "افتحها في CodePen",
+checkbox2: "خطوة 2: سوِّ تطبيق بسيط وأدمجه 🎮",
+step2label: "خطوة 2: سوِّ تطبيق بسيط وأدمجه 🎮 (60 نقطة XP)",
+step2description: "ابدأ في بناء تطبيقك التفاعلي! 🚀",
+task21: "ابدأ مشروعك.",
+task22: "احصل على كود الإدماج.",
+task23: "أضف كود الإدماج لموقعك وشغّله!",
+checkbox3: "خطوة 3: تحدي إضافي 🌟",
+step3label: "خطوة 3: تحدي إضافي 🌟 (50 نقطة XP)",
+step3description: "ورِّينا مهاراتك وأضف شيء مميز! 🌟 أفكار: ",
+task31: "أضف وضعية الوضع الليلي",
+task32: "سوِّ معرض صور متفاعل",
+task33: "ادمج Google Form لجمع الردود",
+task34: "اعرض رسالة ترحيبية بناءً على الوقت الحالي",
+checkbox4: "خطوة 4: شارك وتعاون 🤝",
+step4label: "خطوة 4: شارك وتعاون 🤝 (20 نقطة XP)",
+step4description: "تحمس واستلهم من الآخرين وألهمهم! 😎",
+task41: "ورِّ موقعك لصاحبك وخذ ملاحظاته.",
+task42: "فكر في تحسينات وأضف عناصر جديدة وفرفش مظهرك على أساس اقتراحاتهم.",
+checkbox5: "خطوة 5: قدّم مشروعك 📤",
+step5label: "خطوة 5: قدّم مشروعك 📤 (10 نقطة XP)",
+step5description: "خليك فخور بتقدمك! الكمال مو مطلوب. ✨",
+task51: "احفظ رابط مشروعك في CodePen.",
+task52: "قدمه هنا 👇",
+submissionform: "Google Form عشان تسلّم مشروعك.",
+step6label: "خطوة 6: انشر موقعك 🌐",
+step6description: "خطوتك الأولى نحو عالم الإبداع! 🌍",
+task61: "حنساعدك تنشر موقعك وتخليه متاح للعالم.",
+task62: "احتفل بإنجازك! 🎉",
+  }
+};
+
+
+function toggleLanguage(language) {
   const content = translations[language];
 
   // Update language and direction
@@ -419,56 +426,94 @@ const translations = {
   document.body.style.direction = language === "ar" ? "rtl" : "ltr";
   document.body.style.textAlign = language === "ar" ? "right" : "left";
 
-  // Update text content
-  document.getElementById("header-subtitle").innerHTML = content.headerSubtitle;
+  // Update text content for all IDs
+  document.getElementById("header-subtitle").innerHTML = content.headersubtitle;
+  document.getElementById("progress-bar").textContent = content.progressbar;
 
-  document.getElementById("step-1-label").textContent = content.step1Label;
-  document.getElementById("step-1-description").textContent = content.step1Description;
-  document.getElementById("step-1-button").textContent = content.step1Button;
+  document.getElementById("step-1-label").textContent = content.step1label;
+  document.getElementById("step-1-description").textContent = content.step1description;
+  const step1tasks = document.getElementById("step-1-tasks");
+step1tasks.innerHTML = ""; // Clear existing tasks
+[
+  content.task11, 
+  content.task12, 
+  content.task13
+].forEach((task, index) => {
+  const li = document.createElement("li");
+  li.textContent = task;
 
-  document.getElementById("step-2-label").textContent = content.step2Label;
-  document.getElementById("step-2-description").textContent = content.step2Description;
+  // Handle nested elements for specific tasks
+  if (index === 1) {
+    const span = document.createElement("span");
+    span.id = "info-1";
+    span.textContent = content.info1;
+    li.appendChild(span);
 
-  const examples = document.getElementById("step-2-examples");
-  examples.innerHTML = ""; // Clear existing examples
-  content.step2Examples.forEach(example => {
+    const hintDiv = document.createElement("div");
+    hintDiv.id = "hint-1";
+    hintDiv.textContent = content.hint1;
+    li.appendChild(hintDiv);
+  }
+
+  step1tasks.appendChild(li);
+});
+
+  document.getElementById("step-1-button").textContent = content.step1button
+  
+  document.getElementById("step-2-label").textContent = content.step2label;
+  document.getElementById("step-2-description").textContent = content.step2description;
+
+  const step2tasks = document.getElementById("step-2-tasks");
+  step2tasks.innerHTML = ""; // Clear existing tasks
+  [content.task21, content.task22, content.task23].forEach(task => {
     const li = document.createElement("li");
-    li.textContent = example;
-    examples.appendChild(li);
+    li.textContent = task;
+    step2tasks.appendChild(li);
   });
 
-  document.getElementById("step-2-button").textContent = content.step2Button;
+  document.getElementById("step-3-label").textContent = content.step3label;
+  document.getElementById("step-3-description").textContent = content.step3description;
 
-  document.getElementById("step-3-label").textContent = content.step3Label;
-  document.getElementById("step-3-description").textContent = content.step3Description;
-  document.getElementById("step-3-button").textContent = content.step3Button;
-
-  document.getElementById("step-4-label").textContent = content.step4Label;
-  document.getElementById("step-4-description").textContent = content.step4Description;
-  document.getElementById("step-4-button").textContent = content.step4Button;
-
-  document.getElementById("step-5-label").textContent = content.step5Label;
-  document.getElementById("step-5-description").textContent = content.step5Description;
-      document.getElementById("step-6-label").textContent = content.step6Label;
-      document.getElementById("step-6-description").textContent = content.step6Description;
-
-  const step5List = document.getElementById("step-5-list");
-  step5List.innerHTML = "";
-  content.step5List.forEach(item => {
+  const step3tasks = document.getElementById("step-3-tasks");
+  step3tasks.innerHTML = ""; // Clear existing tasks
+  [content.task31, content.task32, content.task33, content.task34].forEach(task => {
     const li = document.createElement("li");
-    li.textContent = item;
-    step5List.appendChild(li);
+    li.textContent = task;
+    step3tasks.appendChild(li);
   });
 
-  const step5NestedList = document.getElementById("step-5-nested-list");
-  step5NestedList.innerHTML = "";
-  content.step5NestedList.forEach(item => {
+  document.getElementById("step-4-label").textContent = content.step4label;
+  document.getElementById("step-4-description").textContent = content.step4description;
+
+  const step4tasks = document.getElementById("step-4-tasks");
+  step4tasks.innerHTML = ""; // Clear existing tasks
+  [content.task41, content.task42].forEach(task => {
     const li = document.createElement("li");
-    li.textContent = item;
-    step5NestedList.appendChild(li);
+    li.textContent = task;
+    step4tasks.appendChild(li);
   });
 
-  document.getElementById("step-5-note").innerHTML = content.step5Note;
+  document.getElementById("step-5-label").textContent = content.step5label;
+  document.getElementById("step-5-description").textContent = content.step5description;
+
+  const step5tasks = document.getElementById("step-5-tasks");
+  step5tasks.innerHTML = ""; // Clear existing tasks
+  [content.task51, content.task52].forEach(task => {
+    const li = document.createElement("li");
+    li.textContent = task;
+    step5tasks.appendChild(li);
+  });
+
+  document.getElementById("step-6-label").textContent = content.step6label;
+  document.getElementById("step-6-description").textContent = content.step6description;
+
+  const step6tasks = document.getElementById("step-6-tasks");
+  step6tasks.innerHTML = ""; // Clear existing tasks
+  [content.task61, content.task62].forEach(task => {
+    const li = document.createElement("li");
+    li.textContent = task;
+    step6tasks.appendChild(li);
+  });
 }
 
 
@@ -699,5 +744,3 @@ function togglePopup(id) {
   </script>
 </body>
 </html>
-
-    
