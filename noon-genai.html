@@ -90,12 +90,17 @@
   </div>
 
   <script>
-    function copyLink(link) {
-      navigator.clipboard.writeText(link).then(() => {
-        alert("Link copied to clipboard!");
-      }).catch(err => {
-        alert("Failed to copy the link. Please try again.");
-      });
+    navigator.clipboard.writeText(prompt)
+        .then(() => showToast())
+        .catch(() => alert("Failed to copy the prompt."));
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 3000);
     }
   </script>
 </body>
